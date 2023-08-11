@@ -1,5 +1,13 @@
 # Nombre del Proyecto: ProytectoFinal
 
+### Comisión: 27615
+### Alumno: Enzo Garbi
+
+# Version
+
+### 1.0
+
+
 ## Objetivo Funcional
 
 Este proyecto tiene como objetivo gestionar proveedores y órdenes de compra para "Mi Empresa". Ofrece una interfaz fácil de usar para ver la lista de proveedores, editar, borrar, añadir proveedores y gestionar órdenes de compra. Además, incluye un blog para publicar y administrar artículos relacionados con la empresa.
@@ -45,10 +53,18 @@ Para acceder al panel de administración, navegue a `http://localhost:8000/admin
 
 Este proyecto utiliza Django y Bulma CSS para la gestión y diseño de la aplicación.
 
+## Pruebas Documentadas
+
+https://github.com/enzogarbi/Garbi-Enzo-Comision-43865/blob/master/PruebasProyectoFinal.xlsx
+
+## Video Presentacion
+
+https://github.com/enzogarbi/Garbi-Enzo-Comision-43865/blob/master/ProyectoFinal.mp4
+
 ## Contacto
 
 Si tienes alguna pregunta o comentario, no dudes en contactarme.
 
----
+### Whatsapp: +2614710925 
 
 Gracias por utilizar nuestro proyecto!
