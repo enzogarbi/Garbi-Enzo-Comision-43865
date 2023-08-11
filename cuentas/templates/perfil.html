@@ -1,0 +1,42 @@
+{% load static %} <!-- Carga la etiqueta para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <!-- Carga los estilos de Bulma CSS -->
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+</head>
+<body>
+  <section class="section">
+    <div class="container"> <!-- Contenedor principal -->
+      <div class="columns is-centered"> <!-- Centra las columnas -->
+        <div class="column is-half"> <!-- Define una columna con la mitad del ancho del contenedor -->
+          <figure class="image" style="margin:auto; width: 300px;"> <!-- Imagen del logo de la empresa -->
+            <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa" style="max-width: 100%; height: auto;">
+          </figure>
+          <h1 class="title has-text-centered">Perfil del Usuario</h1> <!-- Título de la página -->
+          <div class="box"> <!-- Contenedor de la información del perfil -->
+            {% if request.user.avatar %} <!-- Si el usuario tiene una imagen de perfil -->
+              <figure class="image is-128x128" style="margin:auto">
+                <img src="{{ request.user.avatar.url }}" alt="Profile Picture"> <!-- Muestra la imagen de perfil del usuario -->
+              </figure>
+            {% else %} <!-- Si el usuario no tiene una imagen de perfil -->
+              <!-- Aquí puedes mostrar una imagen predeterminada o algún otro contenido si no hay imagen -->
+              <figure class="image is-128x128" style="margin:auto">
+                <img src="{% static 'path/to/default_profile_picture.jpg' %}" alt="Default Profile Picture"> <!-- Muestra una imagen de perfil predeterminada -->
+              </figure>
+            {% endif %}
+            <p><strong>Username:</strong> {{ request.user.username }}</p> <!-- Muestra el nombre de usuario -->
+            <p><strong>Email:</strong> {{ request.user.email }}</p> <!-- Muestra el correo electrónico -->
+            <p><strong>First Name:</strong> {{ request.user.first_name }}</p> <!-- Muestra el primer nombre -->
+            <p><strong>Last Name:</strong> {{ request.user.last_name }}</p> <!-- Muestra el apellido -->
+            <a href="{% url 'Melfa:menu' %}" class="button is-primary">Volver al menú principal</a> <!-- Botón para volver al menú principal -->
+            <a href="{% url 'cuentas:editar' %}" class="button is-warning">Editar Perfil</a> <!-- Botón para editar el perfil -->
+          </div>
+        </div> <!-- Cierre de la columna -->
+      </div> <!-- Cierre de las columnas -->
+    </div> <!-- Cierre del contenedor -->
+  </section>
+</body>
+</html>

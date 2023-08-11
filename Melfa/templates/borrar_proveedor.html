@@ -1,0 +1,37 @@
+{% load static %} <!-- Carga los archivos estáticos como imágenes y CSS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Borrado</title>
+    <!-- Bulma CSS y Font Awesome para los estilos y los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Enlace a la hoja de estilos personalizada -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <div class="logo-container has-text-centered"> <!-- Logo de la empresa, centrado en la página -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+        </header>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12">
+                    <h1 class="title has-text-centered">¿Estás seguro de que deseas borrar este proveedor?</h1>
+                    <!-- Muestra el nombre del proveedor, centrado y con un tamaño grande -->
+                    <p class="has-text-centered is-size-large">Nombre: {{ proveedor.nombre }}</p>
+                    <form method="post" class="has-text-centered"> <!-- Formulario para confirmar el borrado -->
+                        {% csrf_token %} <!-- Token de seguridad en Django para formularios POST -->
+                        <button type="submit" class="button is-warning"><i class="fas fa-trash"></i> Confirmar</button> <!-- Botón para confirmar la eliminación -->
+                    </form>
+                    <!-- Enlace para cancelar la acción y volver a la lista de proveedores -->
+                    <a href="{% url 'Melfa:proveedor_list' %}" class="button is-link is-centered"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% load static %} <!-- Carga la etiqueta estática de Django para acceder a archivos estáticos, como imágenes -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta la página para dispositivos móviles -->
+    <title>Eliminar Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"> <!-- Utiliza Bulma CSS para estilización -->
+    <style>
+        /* Definición de estilos básicos */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button, a {
+            margin-top: 1rem;
+        }
+
+        .peligro {
+            width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'images/peligro.png' %}" alt="Logo de Mi Empresa"> <!-- Imagen estática de la carpeta 'images' -->
+    </div>
+    <h1>Eliminar Publicacion</h1>
+    <p>¿Estás seguro de que quieres eliminar la publicación"{{ blog.title }}"?</p> <!-- Interpolación del título del blog -->
+    <form method="post"> <!-- Formulario POST para eliminar el blog -->
+        {% csrf_token %} <!-- Token de seguridad requerido en formularios POST en Django -->
+        <button class="button is-danger" type="submit">Sí, eliminar</button> <!-- Botón para confirmar la eliminación -->
+        <a class="button is-warning" href="{% url 'Blog:blog_list' %}">Cancelar</a> <!-- Enlace para cancelar la acción -->
+    </form>
+</body>
+</html>

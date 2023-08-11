@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orden de Compra Subida Exitosamente</title>
+    <!-- Importar los estilos CSS de Bulma -->
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <!-- Estilos internos para la página -->
+    <style>
+        .logo-container {
+            margin-bottom: 20px; /* Agregar espacio debajo del logo */
+        }
+        .success-container {
+            padding: 20px; /* Espaciado interno para el contenedor de éxito */
+        }
+        .buttons {
+            justify-content: center; /* Centrar los botones horizontalmente */
+            display: flex; /* Usar flexbox para organizar los botones */
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container has-text-centered">
+            <!-- Contenedor para el logo -->
+            <div class="logo-container">
+                <!-- Mostrar el logo de la empresa -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+            <!-- Contenedor para el mensaje de éxito -->
+            <div class="success-container">
+                <!-- Título para mostrar el éxito de la operación -->
+                <h1 class="title">Orden de Compra Subida Exitosamente</h1>
+                <!-- Contenedor para los botones -->
+                <div class="buttons">
+                    <!-- Botón para ir a la lista de órdenes de compra -->
+                    <a href="{% url 'Melfa:ordenes_compra_list' %}" class="button is-warning">Ver Lista de Órdenes de Compra</a>
+                    <!-- Botón para volver al menú principal -->
+                    <a href="{% url 'Melfa:menu' %}" class="button is-primary">Volver al Menú Principal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

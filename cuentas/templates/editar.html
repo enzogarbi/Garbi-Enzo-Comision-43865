@@ -1,0 +1,50 @@
+{% load static %} <!-- Carga la etiqueta para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> <!-- Enlace a la hoja de estilos de Bulma -->
+    <style>
+        .field {
+            margin-bottom: 1rem; /* Agrega un margen inferior a cada campo para separación */
+        }
+        .email-field input {
+            width: 50%; /* Ajusta el ancho del campo de correo electrónico a la mitad del contenedor */
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered"> <!-- Centra las columnas en la página -->
+                <div class="column is-half"> <!-- Toma la mitad del ancho disponible -->
+                    <figure class="image" style="margin:auto; width: 300px;">
+                        <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa" style="max-width: 100%; height: auto;"> <!-- Imagen del logo -->
+                    </figure>
+                    <h1 class="title has-text-centered">Editar Perfil</h1> <!-- Título de la página -->
+                    <div class="box">
+                        <form method="post" enctype="multipart/form-data"> <!-- Formulario para enviar datos por POST y permite cargar archivos -->
+                            {% csrf_token %} <!-- Token de seguridad para proteger contra ataques CSRF -->
+                            <!-- Bucle para renderizar cada campo en el formulario -->
+                            {% for field in form %}
+                                <div class="field{% if field.name == 'email' %} email-field{% endif %}"> <!-- Aplica la clase 'email-field' si el campo es 'email' -->
+                                    <label class="label">{{ field.label }}</label> <!-- Etiqueta del campo -->
+                                    <div class="control">
+                                        {{ field }} <!-- Renderiza el campo del formulario -->
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="field"> <!-- Botón para enviar el formulario -->
+                                <div class="control">
+                                    <button type="submit" class="button is-warning">Guardar cambios</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- Fin de la columna -->
+            </div> <!-- Fin de las columnas -->
+        </div> <!-- Fin del contenedor -->
+    </section>
+</body>
+</html>

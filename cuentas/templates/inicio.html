@@ -1,0 +1,77 @@
+{% load static %} <!-- Carga la etiqueta para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Artes Graficas Melfa S.A</title>
+    
+    <!-- Font Awesome: para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bulma CSS: Framework CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+    <!-- CSS Personalizado -->
+    <style>
+        body {
+            background-color: #FFA500; /* Color de fondo naranja */
+            display: flex;
+            justify-content: center; /* Centra el contenido horizontalmente */
+            align-items: center; /* Centra el contenido verticalmente */
+            height: 100vh; /* Altura completa de la ventana */
+            margin: 0; /* Sin margen */
+        }
+
+        .hero {
+            text-align: center; /* Alinea el texto al centro en la sección hero */
+        }
+
+        .logo-container {
+            display: flex; /* Diseño flexible para centrar la imagen */
+            justify-content: center;
+            margin-bottom: 30px; /* Espaciado debajo del logo */
+        }
+
+        .logo-image {
+            max-width: 250px; /* Ancho máximo del logo */
+        }
+
+        .section {
+            margin-bottom: 10px; /* Espaciado debajo de cada sección */
+        }
+    </style>
+</head>
+<body>
+    <section class="hero is-fullheight is-orange is-bold"> <!-- Sección principal con altura completa y color naranja -->
+        <div class="hero-body">
+            <div class="container">
+                <div class="logo-container">
+                    <figure class="image is-128x128 logo-image">
+                        <img src="{% static 'images/logo1.png' %}" alt="Logo de Mi Empresa"> <!-- Imagen del logo -->
+                    </figure>
+                </div>
+                <div class="section">
+                    <p class="title">
+                        Artes Gráficas Melfa S.A <!-- Título principal -->
+                    </p>
+                    <p class="subtitle">
+                        Su etiqueta es nuestro desafío <!-- Subtítulo -->
+                    </p>
+                </div>
+                <div class="buttons is-centered"> <!-- Botones de inicio de sesión y registro -->
+                    <a href="{% url 'cuentas:login' %}" class="button is-light is-rounded"> <!-- Botón de inicio de sesión -->
+                        <span class="icon">
+                          <i class="fas fa-sign-in-alt"></i> <!-- Ícono de inicio de sesión -->
+                        </span>
+                        <span>Iniciar sesión</span>
+                    </a>
+                    <a href="{% url 'cuentas:registro' %}" class="button is-light is-rounded"> <!-- Botón de registro -->
+                        <span class="icon">
+                          <i class="fas fa-user-plus"></i> <!-- Ícono de registro -->
+                        </span>
+                        <span>Registrarse</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

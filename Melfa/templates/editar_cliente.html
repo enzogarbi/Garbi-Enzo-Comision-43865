@@ -1,0 +1,113 @@
+{% load static %} <!-- Carga las herramientas para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Cliente</title>
+    <!-- Incluye la hoja de estilos Bulma y los íconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Estilos adicionales para ajustar la apariencia -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo-container {
+            text-align: center;
+        }
+        .field {
+            margin-left: 72%;
+            margin-right: 10%;
+        }
+        .button-container {
+            margin-left: 40%;
+            margin-right: 10%;
+        }
+        .title {
+            margin-left: 20%;
+            margin-right: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <header class="header">
+            <div class="logo-container">
+                <!-- Muestra el logotipo de la empresa -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+        </header>
+        <div class="container">
+            <h1 class="title">Editar Cliente</h1>
+            <div class="columns">
+                <div class="column is-half">
+                    <!-- Formulario de edición del cliente -->
+                    <form method="post">
+                        {% csrf_token %} <!-- Protección contra ataques CSRF -->
+                        <div class="center-content">
+                            <!-- Campos de entrada para editar la información del cliente -->
+                            <div class="field">
+                                <label class="label">{{ form.nombre.label_tag }}</label>
+                                <div class="control">
+                                    {{ form.nombre }} <!-- Campo de nombre -->
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" style="margin-right: 5px;">{{ form.numero_cliente.label_tag }}</label>
+                                <div class="control">
+                                    {{ form.numero_cliente }} <!-- Campo de número de cliente -->
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">{{ form.email.label_tag }}</label>
+                                <div class="control">
+                                    {{ form.email }} <!-- Campo de email -->
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">{{ form.direccion.label_tag }}</label>
+                                <div class="control">
+                                    {{ form.direccion }} <!-- Campo de dirección -->
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">{{ form.telefono.label_tag }}</label>
+                                <div class="control">
+                                    {{ form.telefono }} <!-- Campo de teléfono -->
+                                </div>
+                            </div>
+                            <!-- Botones para guardar los cambios y volver a la lista de clientes -->
+                            <div class="field is-grouped button-container">
+                                <div class="control">
+                                    <button type="submit" class="button is-warning">
+                                        <i class="fas fa-save"></i> Guardar Cambios
+                                    </button>
+                                </div>
+                                <div class="control">
+                                    <a href="{% url 'Melfa:cliente_list' %}" class="button is-primary">
+                                        <i class="fas fa-arrow-left"></i> Volver a la lista de clientes
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

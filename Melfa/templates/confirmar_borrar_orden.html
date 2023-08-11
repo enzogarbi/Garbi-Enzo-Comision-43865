@@ -1,0 +1,27 @@
+{% load static %} <!-- Cargar el módulo estático para usar archivos como imágenes -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Borrado de Orden de Compra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"> <!-- Enlazar con la hoja de estilos de Bulma para el diseño -->
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="logo-container text-center">
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa"> <!-- Imagen del logo usando la ruta estática -->
+            </div>
+            <h1 class="title is-4 has-text-centered">¿Estás seguro de que quieres borrar esta orden de compra?</h1> <!-- Título de la página -->
+            <div class="buttons has-text-centered">
+                <!-- Formulario para confirmar la eliminación -->
+                <form method="post" style="display: inline-block;">
+                    {% csrf_token %} <!-- Token CSRF para proteger el formulario -->
+                    <button type="submit" class="button is-danger">Sí, borrar</button> <!-- Botón para confirmar el borrado -->
+                </form>
+                <a href="{% url 'Melfa:ordenes_compra_list' %}" class="button is-link">No, volver</a> <!-- Enlace para cancelar y volver a la lista de órdenes -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>

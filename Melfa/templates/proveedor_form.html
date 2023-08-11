@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Proveedor</title>
+    <!-- Enlace al archivo Bulma CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-container {
+            margin: 0 auto; /* Centrar el formulario horizontalmente */
+        }
+
+        .title {
+            margin-bottom: 20px; /* Espacio entre el título y el formulario */
+        }
+
+        .button-container {
+            margin-top: 20px; /* Espacio entre los botones y el formulario */
+            display: flex;
+            justify-content: space-between; /* Alinea los botones uno al lado del otro */
+        }
+
+        .button {
+            flex: 1; /* Distribuye el espacio disponible entre los botones */
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo">
+                            <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="container form-container">
+            <h1 class="title">Agregar Proveedor</h1>
+            <div class="row">
+                <form class="col s12" method="post">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label class="label">{{ form.nombre.label_tag }}</label>
+                        <div class="control">
+                            {{ form.nombre }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.insumo.label_tag }}</label>
+                        <div class="control">
+                            {{ form.insumo }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.email.label_tag }}</label>
+                        <div class="control">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.direccion.label_tag }}</label>
+                        <div class="control">
+                            {{ form.direccion }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.telefono.label_tag }}</label>
+                        <div class="control">
+                            {{ form.telefono }}
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" class="button is-warning">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                        <a href="{% url 'Melfa:proveedor_list' %}" class="button is-primary">
+                            <i class="fas fa-arrow-left"></i> Volver a la lista de Proveedores
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

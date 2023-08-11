@@ -1,0 +1,74 @@
+{% load static %} <!-- Carga la etiqueta para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <!-- Enlace a los estilos de Bulma y Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Estilos personalizados para el formulario */
+        .full-height {
+            min-height: 100vh; /* Altura mínima de 100% de la ventana */
+            display: flex; /* Utiliza flexbox */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+        }
+        .custom-file-input, .custom-file-label, .custom-file-button {
+            /* Estilos para los elementos de entrada de archivos personalizados */
+        }
+        .input.is-small {
+            width: 80%; /* Reduce el ancho de los campos al 80% */
+        }
+    </style>
+</head>
+<body>
+    <section class="section full-height">
+        <div class="container has-text-centered">
+            <!-- Logotipo de la empresa -->
+            <div class="logo-container">
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+            <div class="columns is-centered is-vcentered">
+                <div class="column is-half">
+                    <h1 class="title">Registro de Usuario</h1>
+                    <!-- Formulario con enctype para la carga de archivos -->
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %} <!-- Token de seguridad en Django -->
+                        <!-- Itera a través de los campos del formulario RegistroForm -->
+                        {% for field in form %}
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <!-- Campo de entrada con estilos de Bulma y atributos dinámicos -->
+                                    <input class="input is-warning is-small" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" placeholder="{{ field.label }}" {% if field.field.required %}required{% endif %} value="{{ field.value|default_if_none:"" }}">
+                                    <!-- Icono de usuario -->
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="button is-warning">Registrarse</button> <!-- Botón de envío -->
+                    </form>
+
+                    <!-- Sección para mostrar los mensajes de error -->
+                    {% if form.errors %}
+                        <div class="notification is-danger">
+                            <h5 class="subtitle">Error:</h5>
+                            <ul>
+                                <!-- Itera a través de los errores y los muestra como lista -->
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

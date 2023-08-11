@@ -1,0 +1,57 @@
+{% load static %} <!-- Carga las etiquetas para usar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Papeles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"> <!-- Enlaza con Bulma CSS para estilizar la página -->
+    <style>
+        .header { /* Estilo para el encabezado */
+            text-align: center; /* Centra el texto en el encabezado */
+            padding: 20px; /* Agrega un relleno al encabezado */
+        }
+    </style>
+</head>
+<body>
+    <div class="header has-text-centered"> <!-- Encabezado, centrado horizontalmente -->
+        <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa"> <!-- Logo de la empresa -->
+    </div>
+
+    <nav class="navbar is-warning is-centered" role="navigation" aria-label="main navigation"> <!-- Navegación en el sitio con estilo Bulma -->
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{% url 'Melfa:menu' %}">Volver al Menú Principal</a> <!-- Enlace para regresar al menú principal -->
+            </div>
+            <div class="navbar-end">
+                <a class="navbar-item" href="{% url 'Blog:blog_create' %}">Crear nuevo blog</a> <!-- Enlace para crear un nuevo blog -->
+            </div>
+        </div>
+    </nav>
+
+    <section class="section"> <!-- Sección principal -->
+        <div class="container">
+            <div class="columns is-multiline is-centered"> <!-- Columnas, permitiendo múltiples líneas y centradas -->
+                {% for blog in blogs %} <!-- Bucle para iterar sobre cada blog en la lista de blogs -->
+                <div class="column is-one-third"> <!-- Columna individual para cada blog -->
+                    <div class="card"> <!-- Tarjeta para presentar el blog -->
+                        <div class="card-image">
+                            <figure class="image is-140x140"> <!-- Imagen del blog con dimensiones específicas -->
+                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                            </figure>
+                        </div>
+                        <div class="card-content"> <!-- Contenido de la tarjeta -->
+                            <h2 class="title">{{ blog.title }}</h2> <!-- Título del blog -->
+                            <p class="subtitle">{{ blog.subtitle }}</p> <!-- Subtítulo del blog -->
+                            <p>{{ blog.author }}</p> <!-- Autor del blog -->
+                            <a class="button is-primary" href="{% url 'Blog:page_detail' blog.id %}">Leer más</a> <!-- Botón para leer más -->
+                            <a class="button is-warning" href="{% url 'Blog:blog_edit' blog.id %}">Edit</a> <!-- Botón para editar -->
+                            <a class="button is-danger" href="{% url 'Blog:blog_delete' blog.id %}">Delete</a> <!-- Botón para eliminar -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

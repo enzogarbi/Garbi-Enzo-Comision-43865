@@ -1,0 +1,18 @@
+{% block content %} <!-- Inicio del bloque de contenido, para ser insertado en una plantilla base -->
+
+  <h1>Edit User Profile</h1> <!-- Título de la página -->
+
+  <!-- Inicio del formulario para editar el perfil del usuario -->
+  <form method="post" enctype="multipart/form-data"> <!-- El atributo 'enctype' permite el envío de archivos en el formulario -->
+
+    {% csrf_token %} <!-- Token CSRF para proteger el formulario contra ataques maliciosos -->
+
+    {{ user_form.as_p }} <!-- Renderizar el formulario del usuario como una serie de párrafos. 'user_form' debe ser pasado al contexto de la plantilla en la vista -->
+
+    {{ profile_form.as_p }} <!-- Renderizar el formulario del perfil como una serie de párrafos. 'profile_form' debe ser pasado al contexto de la plantilla en la vista -->
+
+    <button type="submit" class="btn btn-primary">Save Changes</button> <!-- Botón para enviar el formulario -->
+
+  </form> <!-- Fin del formulario -->
+
+{% endblock %} <!-- Fin del bloque de contenido -->

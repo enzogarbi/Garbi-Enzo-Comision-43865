@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Subir Orden de Compra</title>
+    <!-- Importación de Bulma CSS para estilizar la página -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        /* Estilos personalizados */
+        .title-margin {
+            margin-left: 20px; /* Margen a la izquierda del título, ajustable según tus necesidades */
+        }
+        .buttons-margin {
+            margin-left: 10px; /* Margen a la izquierda de los botones, ajustable según tus necesidades */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <header class="header has-text-centered">
+            <div class="logo-container">
+                <!-- Logo de la empresa -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+        </header>
+        <!-- Título de la página -->
+        <h1 class="title has-text-centered title-margin">Subir Orden de Compra</h1>
+        <!-- Formulario para subir la orden de compra -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Iteración a través de los campos del formulario -->
+            {% for field in form %}
+                <div class="field">
+                    <label class="label">{{ field.label_tag }}</label>
+                    <div class="control">
+                        {{ field }} <!-- Renderiza el campo del formulario -->
+                    </div>
+                    <!-- Si hay texto de ayuda, lo muestra -->
+                    {% if field.help_text %}
+                        <p class="help is-info">{{ field.help_text }}</p>
+                    {% endif %}
+                    <!-- Si hay errores en el campo, los muestra -->
+                    {% if field.errors %}
+                        <p class="help is-danger">{{ field.errors.as_text }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <!-- Botón para enviar el formulario -->
+            <div class="buttons has-text-centered buttons-margin">
+                <button class="button is-warning" type="submit">
+                    <i class="fas fa-upload"></i> Subir Orden
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Botón para volver a la lista de órdenes -->
+    <div class="has-text-centered mt-3">
+        <a href="{% url 'Melfa:ordenes_compra_list' %}" class="button is-primary">
+            <i class="fas fa-arrow-left"></i> Volver a la lista de ordenes
+        </a>
+    </div>
+</body>
+
+</html>

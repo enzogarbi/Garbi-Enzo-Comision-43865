@@ -1,0 +1,35 @@
+{% load static %} <!-- Cargar archivos estáticos en Django, como imágenes, CSS -->
+
+<!DOCTYPE html> <!-- Definición del tipo de documento HTML -->
+<html>
+<head>
+    <title>Borrar Orden de Compra</title> <!-- Título de la página -->
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}"> <!-- Enlace a la hoja de estilos Bulma CSS -->
+    <style>
+        .logo-container {
+            margin-bottom: 20px; /* Estilo para el contenedor del logo */
+        }
+        .confirmation-container {
+            padding: 20px; /* Relleno alrededor del contenedor de confirmación */
+            margin-top: -40px; /* Margen superior negativo para un diseño específico */
+        }
+    </style>
+</head>
+<body>
+    <section class="section"> <!-- Sección principal del contenido -->
+        <div class="container has-text-centered"> <!-- Contenedor centralizado -->
+            <div class="logo-container">
+                <img src="{% static 'images/peligro.png' %}" alt="Logo de Mi Empresa"> <!-- Imagen de advertencia -->
+            </div>
+            <div class="confirmation-container"> <!-- Contenedor para la confirmación -->
+                <h1 class="title">¿Estás seguro de que quieres borrar esta orden de compra?</h1> <!-- Mensaje de confirmación -->
+                <form method="post"> <!-- Inicio del formulario para borrar la orden -->
+                    {% csrf_token %} <!-- Token de seguridad en Django para formularios POST -->
+                    <button type="submit" class="button is-danger">Sí, borrar</button> <!-- Botón para confirmar la eliminación -->
+                    <a href="{% url 'Melfa:ordenes_compra_list' %}" class="button is-warning">No, volver</a> <!-- Enlace para cancelar la acción -->
+                </form> <!-- Fin del formulario -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %} <!-- Carga las etiquetas para usar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Publicacion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"> <!-- Enlaza con Bulma CSS para estilizar la página -->
+</head>
+<body>
+    <section class="section"> <!-- Sección principal de la página -->
+        <div class="container"> <!-- Contenedor central para alinear y centrar contenido -->
+            <div class="columns is-centered"> <!-- Crea una estructura de columnas, y centra el contenido -->
+                <div class="column is-half"> <!-- Define la columna a la mitad de ancho del contenedor -->
+                    <div style="text-align: center;"> <!-- Centra el contenido dentro del div -->
+                        <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa"> <!-- Muestra el logo estático de la carpeta 'images' -->
+                    </div>
+                    <h1 class="title has-text-centered">Editar Publicacion</h1> <!-- Título de la sección, centrado -->
+
+                    <form method="POST"> <!-- Formulario para enviar datos de la edición, usando método POST -->
+                        {% csrf_token %} <!-- Token de seguridad requerido para formularios POST en Django -->
+
+                        {% for field in form %} <!-- Bucle que recorre todos los campos del formulario -->
+                        <div class="field"> <!-- Cada campo del formulario se encapsula en un div 'field' de Bulma -->
+                            <label class="label">{{ field.label }}</label> <!-- Etiqueta para el campo del formulario -->
+
+                            <div class="control"> <!-- Contenedor para elementos de control, como entradas de texto o áreas de texto -->
+                                {% if field.name == "body" %} <!-- Si el nombre del campo es 'body', use un área de texto -->
+                                <textarea class="textarea" name="{{ field.name }}" minlength="2000" required>{{ field.value|default_if_none:"" }}</textarea>
+                                {% else %} <!-- Para otros campos, use un input de texto -->
+                                <input class="input" type="text" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" required>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <div class="has-text-centered"> <!-- Centra el contenido dentro del div -->
+                            <button class="button is-warning" type="submit">Guardar Cambios</button> <!-- Botón para enviar el formulario -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

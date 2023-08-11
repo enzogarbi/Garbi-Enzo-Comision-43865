@@ -1,0 +1,67 @@
+{% load static %} <!-- Carga los archivos estáticos, como imágenes y CSS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Borrado</title>
+    <!-- Bulma CSS (CDN link) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Enlace a la hoja de estilos personalizada -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Enlace a Font Awesome para iconos -->
+    <style>
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Altura total de la ventana */
+        }
+
+        .logo-container {
+            text-align: center; /* Centra el contenido del contenedor del logo */
+        }
+
+        .title {
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+
+        .client-info {
+            font-size: 1.5rem; /* Tamaño de la fuente para la información del cliente */
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex; /* Utiliza flexbox para organizar los botones */
+            justify-content: center;
+        }
+
+        .button {
+            margin: 0 10px; /* Margen horizontal entre los botones */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="{% static 'images/peligro.png' %}" alt="Logo de Mi Empresa"> <!-- Logo de la empresa -->
+            </div>
+        </header>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12">
+                    <h1 class="title has-text-centered">¿Estás seguro de que deseas borrar este cliente?</h1> <!-- Título de confirmación -->
+                    <p class="client-info has-text-centered">Nombre: {{ cliente.nombre }}</p> <!-- Información del cliente que se va a borrar -->
+                    <form method="post" class="has-text-centered">
+                        {% csrf_token %} <!-- Token de seguridad en Django para formularios POST -->
+                        <div class="button-container">
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash"></i> Confirmar</button> <!-- Botón para confirmar el borrado -->
+                            <a href="{% url 'Melfa:cliente_list' %}" class="button is-warning"><i class="fas fa-arrow-left"></i> Cancelar</a> <!-- Botón para cancelar y volver a la lista de clientes -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

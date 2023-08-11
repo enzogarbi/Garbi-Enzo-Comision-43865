@@ -1,0 +1,64 @@
+{% load static %} <!-- Carga la etiqueta para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bulma CSS, un marco CSS para estilizar la página -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+    <!-- Estilo personalizado para centrar el contenedor -->
+    <style>
+        .centered-container {
+            display: flex;             /* Utiliza un diseño flexible */
+            flex-direction: column;    /* Orienta los elementos en una columna */
+            justify-content: center;   /* Centra los elementos verticalmente */
+            align-items: center;       /* Centra los elementos horizontalmente */
+            height: 100vh;             /* Altura total de la ventana del navegador */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-container"> <!-- Contenedor centrado -->
+        <header class="header center">
+            <div class="logo-container">
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa"> <!-- Imagen del logotipo de la empresa -->
+            </div>
+        </header>
+        <div class="content"> <!-- Contenido principal -->
+            <div class="login-container"> <!-- Contenedor para el inicio de sesión -->
+                <div class="form-container is-flex"> <!-- Contenedor del formulario, con diseño flexible -->
+                    <form method="post"> <!-- Formulario de inicio de sesión, método POST -->
+                        {% csrf_token %} <!-- Token de seguridad CSRF en formularios de Django -->
+                        <div class="field"> <!-- Campo para el nombre de usuario -->
+                            <label class="label">Nombre de usuario:</label>
+                            <div class="control has-icons-left">
+                                <input class="input is-warning is-small" type="text" placeholder="Usuario" name="username" id="username" required>
+                                <span class="icon is-small is-left"> <!-- Ícono de usuario -->
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field"> <!-- Campo para la contraseña -->
+                            <label class="label">Contraseña:</label>
+                            <div class="control has-icons-left">
+                                <input class="input is-warning is-small" type="password" placeholder="Contraseña" name="password" id="password" required>
+                                <span class="icon is-small is-left"> <!-- Ícono de candado -->
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field"> <!-- Botón para enviar el formulario -->
+                            <div class="control">
+                                <button type="submit" class="button is-warning"> <!-- Botón con ícono de inicio de sesión -->
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

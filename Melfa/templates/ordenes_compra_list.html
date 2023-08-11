@@ -1,0 +1,47 @@
+{% load static %} <!-- Carga las rutas estáticas para acceder a archivos como CSS o imágenes -->
+
+<!DOCTYPE html> <!-- Define el documento como HTML5 -->
+<html>
+<head>
+    <title>Lista de Órdenes de Compra</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}"> <!-- Vincula una hoja de estilos CSS (en este caso, Bulma, un framework CSS) -->
+</head>
+<body>
+    <section class="section"> <!-- Define una sección del contenido -->
+        <div class="container"> <!-- Contenedor que centra el contenido -->
+            <header class="has-text-centered"> <!-- Encabezado centrado -->
+                <div class="logo-container"> <!-- Contenedor para el logotipo -->
+                    <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa"> <!-- Imagen del logotipo -->
+                </div>
+            </header>
+
+            <h1 class="title has-text-centered">Lista de Órdenes de Compra</h1> <!-- Título centrado -->
+
+            <div class="content has-text-centered"> <!-- Contenido centrado -->
+                <ul> <!-- Lista no ordenada -->
+                    {% for orden in ordenes %} <!-- Bucle que recorre cada orden de compra en "ordenes" -->
+                        <li class="order-item"> <!-- Elemento de lista para cada orden -->
+                            <p><strong>Cliente:</strong> {{ orden.cliente.nombre }}</p> <!-- Nombre del cliente -->
+                            <p><strong>Número de Orden:</strong> {{ orden.numero_orden }}</p> <!-- Número de la orden -->
+                            <a href="{{ orden.archivo.url }}" download class="button is-success">Descargar</a> <!-- Botón para descargar la orden -->
+                            <a href="{% url 'Melfa:borrar_orden_compra' orden.id %}" class="button is-danger">Borrar</a> <!-- Botón para borrar la orden -->
+                        </li>
+                    {% endfor %} <!-- Fin del bucle -->
+                </ul>
+
+                <div class="buttons has-text-centered is-centered"> <!-- Contenedor de botones -->
+                    <a href="{% url 'Melfa:subir_orden_compra' %}" class="button is-link"> <!-- Botón para subir una nueva orden -->
+                        <i class="fas fa-upload"></i> Subir Nueva Orden de Compra
+                    </a>
+                    <a href="{% url 'Melfa:buscar_orden_compra' %}" class="button is-warning"> <!-- Botón para buscar órdenes -->
+                        <i class="fas fa-list"></i> Buscar Ordenes de Compra
+                    </a>
+                    <a href="{% url 'Melfa:menu' %}" class="button is-primary"> <!-- Botón para volver al menú principal -->
+                        <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

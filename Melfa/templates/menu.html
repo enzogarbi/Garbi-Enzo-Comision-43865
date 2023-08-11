@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Bienvenidos a Artes Graficas Melfa S.A</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Simple line icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" />
+    </head>
+    <style>
+        .bg-black {
+            background-color: black;
+        }
+    
+        .bg-black h3,
+        .bg-black h2,
+            .bg-black .text-white {
+            color: orange;
+        }
+
+        .text-orange {
+            color: orange;
+        }
+    </style>
+    <body id="page-top">
+        <!-- Navegación-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#page-top">Artes Graficas Melfa</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'Blog:blog_list' %}">Papeles</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'Melfa:cliente_list' %}">Clientes</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'Melfa:proveedor_list' %}">Proveedores</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'Melfa:ordenes_compra_list' %}">Órdenes de Compra</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'Melfa:acerca_de_mi' %}">Acerca de Mí</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'cuentas:perfil' %}">Perfil</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'admin:index' %}">Admin</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'cuentas:inicio' %}">logout</a></li>
+                
+            </ul>
+        </nav>
+        <!-- Encabezado-->
+        <header class="masthead d-flex align-items-center">
+            <div class="container px-4 px-lg-5 text-center">
+                
+                <a class="btn btn-primary btn-orange" href="#about">Descubre Más</a>
+            </div>
+        </header>
+        
+        <!-- Acerca de-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <h1 class="mb-1" style="color: #FFA500;">Artes Graficas Melfa S.A</h1>
+                        <h3 class="mb-5" style="color: #FFA500;"><em>Su etiqueta es nuestro desafío</em></h3>
+
+                        <h2>    Artes Gráficas Melfa S.A. es una empresa dedicada a lograr la excelencia en la producción de etiquetas autoadhesivas. Nuestro objetivo es brindarle la mejor y más ágil atención y un producto de gran calidad. Para ello, incorporamos nueva tecnología de forma constante, para estar al día con los últimos procesos que permiten una variedad de posibilidades.</h2>
+                        
+                        <a class="btn btn-dark btn-xl" href="#services">Lo que Ofrecemos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Servicios-->
+        <section class="content-section bg-black text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h3 class="text-primary mb-0">Servicios</h3>
+                    <h2 class="mb-5">Lo que Ofrecemos</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-printer"></i></span>
+                        <h3 class="text-orange">Impresion Flexo</h3>
+                        <p class="text-faded mb-0">¡La mejor tecnologia en impresion, aplicada a tu etiqueta!</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                        <h3 class="text-orange">Diseño</h3>
+                        <p class="text-faded mb-0">Nuetros diseñadores adaptan tu idea y la hacen realidad</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-calendar"></i></span>
+                        <h3 class="text-orange">Entrega Rapida</h3>
+                        <p class="text-faded mb-0">
+                            COntamos con tecnologia que nos permite responder rapidamente a los pedidos de nuestros clientes.
+                            <i class="fas fa-heart"></i>
+                            Start Bootstrap!
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-eye"></i></span>
+                        <h3 class="text-orange">Calidad</h3>
+                        <p class="text-faded mb-0">Contamos con el mejor control de Calidad, ya que contamos con certificacion BRCGS - Norma mundial de seguridad alimentaria </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Anuncio-->
+        <section class="callout">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mx-auto mb-5">
+                 Nuestra Tecnologia
+                </h2>
+                <a class="btn btn-primary btn-xl" href="https://www.nilpeter.com/Products/Presses/Flexo/FA-Line">Conoce Mas</a>
+            </div>
+        </section>
+        <!-- Portfolio-->
+        <section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h3 class="text-secondary mb-0">Portafolio</h3>
+                    <h2 class="mb-5">Proyectos Recientes</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5 no-gutters mb-4 mb-lg-5">
+                    <div class="col-lg-6"><img class="img-fluid" src="/static/assets/img/1.jpg" alt="..." /></div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">Diseño de la imagen del vino del prestigioso director técnico Marcelo Gallardo</h4>
+                                    <p class="mb-0 text-white-50">– BY BODEGA NORTON –</p>
+                                    <hr class="d-none d-lg-block mb-0 ms-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 no-gutters">
+                    <div class="col-lg-6"><img class="img-fluid" src="/static/assets/img/2.jpg" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">Rediseño de los varietales, actualizando su identidad de marca y sus códigos visuales ganando destaque y diferenciación entre sus varietales.</h4>
+                                    <p class="mb-0 text-white-50">– BY PASCUAL TOSO –</p>
+                                    <hr class="d-none d-lg-block mb-0 me-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="row gx-4 gx-lg-5 no-gutters">
+                    <div class="col-lg-6"><img class="img-fluid" src="/static/assets/img/4.jpg" alt="..." /></div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">Un espumante para celebrar momentos únicos. Edición Especial de este clásico espumante para esos momentos de unión, celebración y disfrute.</h4>
+                                    <p class="mb-0 text-white-50">– BY FEDERICO DE ALVEAR –</p>
+                                    <hr class="d-none d-lg-block mb-0 me-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        <!-- Pie de Página-->
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/artesgraficasmelfa"><i class="icon-social-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/artesgraficasmelfa/"><i class="icon-social-instagram"></i></a>
+                    </li>
+                                     
+                </ul>
+              
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+        <!-- Terceros plugins (necesarios para algunos componentes)-->
+        <script src="/static/js/scripts.js"></script>
+    </body>
+</html>

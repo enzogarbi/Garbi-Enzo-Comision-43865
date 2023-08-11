@@ -1,0 +1,110 @@
+{% load static %} <!-- Carga las herramientas para manejar archivos estáticos en Django -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Proveedor</title>
+    <!-- Incluye Bulma CSS, íconos de Font Awesome y los estilos personalizados -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo-container {
+            text-align: center;
+        }
+        .field {
+            margin-left: 88%; /* Ajusta el margen izquierdo de los campos */
+            margin-right: 10%; /* Ajusta el margen derecho de los campos */
+        }
+        .title {
+            margin-left: 40%; /* Ajusta el margen izquierdo del título */
+            margin-right: 10%; /* Ajusta el margen derecho del título */
+        }
+        .button-container {
+            margin-left: 60%; /* Ajusta el margen izquierdo de los botones */
+            margin-right: 10%; /* Ajusta el margen derecho de los botones */
+        }
+    </style>
+</head>
+<body>
+    <div class="container center">
+        <header class="header">
+            <div class="logo-container">
+                <!-- Muestra el logotipo de la empresa -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+        </header>
+        <div class="container">
+            <h1 class="title">Editar Proveedor</h1>
+            <div class="columns">
+                <div class="column is-half">
+                    <!-- Formulario para editar la información del proveedor -->
+                    <form method="post">
+                        {% csrf_token %} <!-- Protección contra ataques CSRF -->
+                        <!-- Campos de entrada para editar los datos del proveedor -->
+                        <div class="field">
+                            <label class="label">{{ form.nombre.label_tag }}</label>
+                            <div class="control">
+                                {{ form.nombre }} <!-- Campo de nombre del proveedor -->
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.insumo.label_tag }}</label>
+                            <div class="control">
+                                {{ form.insumo }} <!-- Campo de insumo del proveedor -->
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.email.label_tag }}</label>
+                            <div class="control">
+                                {{ form.email }} <!-- Campo de email del proveedor -->
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.direccion.label_tag }}</label>
+                            <div class="control">
+                                {{ form.direccion }} <!-- Campo de dirección del proveedor -->
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.telefono.label_tag }}</label>
+                            <div class="control">
+                                {{ form.telefono }} <!-- Campo de teléfono del proveedor -->
+                            </div>
+                        </div>
+                        <!-- Botones para guardar los cambios y volver a la lista de proveedores -->
+                        <div class="field is-grouped button-container">
+                            <div class="control">
+                                <button type="submit" class="button is-warning">
+                                    <i class="fas fa-save"></i> Guardar Cambios
+                                </button>
+                            </div>
+                            <div class="control">
+                                <a href="{% url 'Melfa:proveedor_list' %}" class="button is-primary">
+                                    <i class="fas fa-arrow-left"></i> Volver a la lista de proveedores
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

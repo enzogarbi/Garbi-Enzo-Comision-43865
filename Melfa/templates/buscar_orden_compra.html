@@ -1,0 +1,54 @@
+{% load static %} <!-- Carga los archivos estáticos, como imágenes y CSS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Orden de Compra</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}"> <!-- Enlace a la hoja de estilos Bulma CSS -->
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <header class="has-text-centered">
+                <div class="logo-container">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa"> <!-- Logo de la empresa -->
+                </div>
+            </header>
+
+            <h1 class="title has-text-centered">Buscar Orden de Compra</h1> <!-- Título de la página -->
+
+            <div class="content has-text-centered">
+                <!-- Formulario para buscar órdenes de compra -->
+                <form action="{% url 'Melfa:buscar_orden_compra' %}" method="post" class="field has-addons has-addons-centered">
+                    {% csrf_token %} <!-- Token de seguridad en Django para formularios POST -->
+                    <div class="control">
+                        <input type="text" name="numero_orden" placeholder="Número de Orden" class="input" style="width: 200px;"> <!-- Campo de entrada para el número de orden -->
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-warning">Buscar</button> <!-- Botón para realizar la búsqueda -->
+                    </div>
+                </form>
+                
+                <ul>
+                    <!-- Bucle que recorre y muestra las órdenes encontradas -->
+                    {% for orden in ordenes %}
+                        <li class="order-item">
+                            <p><strong>Cliente:</strong> {{ orden.cliente.nombre }}</p> <!-- Nombre del cliente -->
+                            <p><strong>Número de Orden:</strong> {{ orden.numero_orden }}</p> <!-- Número de orden -->
+                            <a href="{{ orden.archivo.url }}" download class="button is-success">Descargar</a> <!-- Botón para descargar la orden -->
+                            <a href="{% url 'Melfa:borrar_orden_compra' orden.id %}" class="button is-danger">Borrar</a> <!-- Botón para borrar la orden -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="buttons has-text-centered is-centered">
+                <!-- Enlace para volver al listado de órdenes -->
+                <a href="{% url 'Melfa:ordenes_compra_list' %}" class="button is-primary">
+                    <i class="fas fa-arrow-left"></i> Volver al listado de ordenes
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
