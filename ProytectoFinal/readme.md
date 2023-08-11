@@ -1,6 +1,6 @@
-# Nombre del Proyecto: ProytectoFinal
+# Nombre del Proyecto: Proytecto Final
 
-### Comisión: 27615
+### Comisión: 43865
 ### Alumno: Enzo Garbi
 
 # Version
@@ -30,13 +30,13 @@ Este proyecto tiene como objetivo gestionar proveedores y órdenes de compra par
 
 - **Título:** Título del artículo del blog.
 - **Contenido:** Contenido del artículo del blog.
-- **Fecha de Publicación:** Fecha en la que se publicó el artículo.
+- **Imagen:** Imagen representativa de lo que publicamos en el blog
 
 ## Instalación y Configuración
 
 Para instalar y ejecutar este proyecto en su entorno local, siga estos pasos:
 
-1. Clonar el repositorio: `git clone <URL_DEL_REPOSITORIO>`
+1. Clonar el repositorio: `git clone https://github.com/enzogarbi/Garbi-Enzo-Comision-43865.git`
 2. Navegar al directorio del proyecto: `cd ProytectoFinal`
 3. Instalar las dependencias necesarias: `pip install -r requirements.txt`
 4. Aplicar las migraciones de la base de datos: `python manage.py migrate`
